@@ -52,6 +52,9 @@ For Bert Series:
 experiment setting are in file `config.py`
 
 # ablation experiment
+example:
+`cd Ablations`
+`python train_ablation_augment_Bert.py --model Bert --dataset AGNEWS --batch_size 128 --augment_num 5`
 
 ## mertic leaning
     for classical models:
@@ -59,4 +62,3 @@ experiment setting are in file `config.py`
     
     for bert series:
         nohup python train_ablation_metricLearning——Bert.py --model Bert --dataset AGNEWS  --batch_size 128 --augment_num 5 &
-## data augment
