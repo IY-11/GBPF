@@ -276,13 +276,12 @@ for epoch in range(1, 1 + args.epoch):
             loss = loss1 + entropyLoss
             optimizer.zero_grad()  # 梯度清零
             for name, param in model.named_parameters():
-                print('here...............',param.grad)
+                # print('here...............',param.grad)
                 if param.grad is None:
                     print('存在none的梯度')
                 if param.grad is not None:
                     print(f"{name}: {param.grad.mean()}, {param.grad.max()}")
 
-            print('测试点12123') # 梯度消失了 为什么！！？
             loss.backward()  # 反向传播 
             print('Finished backward pass, updating optimizer...')
             optimizer.step()  # 更新模型参数
@@ -453,7 +452,7 @@ for epoch in range(1, 1 + args.epoch):
 
                 with torch.no_grad():
                     for i, (texts, label) in enumerate(test_iterator):
-                        # LLP=>评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估
+                        # 评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估
                         features = Tokenizer(texts, max_length=maxlen, padding='max_length', truncation=True,
                                              return_tensors='pt')
                         label = label.to(device)

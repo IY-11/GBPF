@@ -338,7 +338,7 @@ for epoch in range(1,1+args.epoch):
                         features = (strs2seq(features, vocab,tokenizer, maxlen)).to(args.device)
                         label = label.to(args.device) # size: ([64])
                         # features = features.to(args.device) # size: ([64,300]) tuple
-                        # LLP=>评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估    
+                        # 评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估    
                         output = model(features, label, flag=-1, purity=1)   
                        
                         _, pred1 = torch.max(output.data, 1)

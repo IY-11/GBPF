@@ -134,7 +134,7 @@ class LSTM(nn.Module):
 
             pur_tensor = torch.Tensor([[purity]] * out.size(0)) # 为每个batch_size复制一个纯度
             out = torch.cat((pur_tensor.to(args.device), out), dim=1).to(args.device) #out (batch_size,purity+target+features)
-			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据（LLP：将返回的balls删除了）
+			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据
             out, target_label= GBNR.apply(out.to(args.cpu_device))  # apply对张量的每个元素应用to(cup_device)
 
             # 保存聚好的粒球中心和标签
@@ -156,7 +156,7 @@ class LSTM(nn.Module):
             pur_tensor = torch.Tensor([[purity]] * out.size(0)) # 为每个batch_size复制一个纯度
             out = torch.cat((pur_tensor.to(args.device), out), dim=1)  #out (batch_size,purity+target+features)
 			
-			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据（LLP：将返回的balls删除了）
+			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据
             out, target_label= (GBNR.apply(out.to(args.cpu_device)) ).to(args.device) # apply对张量的每个元素应用to(cpu_device)
             # 保存聚好的粒球中心和标签
             self.center_data = out # size: (ball_num,hidden_size)
@@ -239,7 +239,7 @@ class TextCNN(nn.Module):
             pur_tensor = torch.Tensor([[purity]] * out.size(0)) # 为每个batch_size复制一个纯度
             out = torch.cat((pur_tensor.to(args.device), out), dim=1)  #out (batch_size,purity+target+features)
             
-            # 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据（LLP：将返回的balls删除了）
+            # 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据
             out, target_label= GBNR.apply(out.to(args.cpu_device))  # apply对张量的每个元素应用to(cup_device)
             # out, target_label= GBNR.apply(out.to(args.device)) 
             # 保存聚好的粒球中心和标签
@@ -259,7 +259,7 @@ class TextCNN(nn.Module):
             pur_tensor = torch.Tensor([[purity]] * out.size(0)) # 为每个batch_size复制一个纯度
             out = torch.cat((pur_tensor.to(args.device), out), dim=1)  #out (batch_size,purity+target+features)
 			
-			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据（LLP：将返回的balls删除了）
+			# 输入粒球层，聚球，输出 out,是球心向量，target：球心标签  balls:球中的数据
             out, target_label= GBNR.apply(out.to(args.cpu_device))  # apply对张量的每个元素应用to(cup_device)
             # 保存聚好的粒球中心和标签
             self.center_data = out # size: (ball_num,hidden_size)

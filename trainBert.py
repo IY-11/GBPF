@@ -439,7 +439,7 @@ for epoch in range(1,1+args.epoch):
             
                 with torch.no_grad():
                     for i, (texts,label)in enumerate(test_iterator):
-                        # LLP=>评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估  
+                        # 评估阶段，不过粒球层 用聚好的粒球最近的中心替换进行评估  
                         features = Tokenizer(texts, max_length=maxlen, padding='max_length', truncation=True, return_tensors='pt')
                         label = label.to(args.device)
                         bs = label.shape[0]

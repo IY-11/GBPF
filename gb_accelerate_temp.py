@@ -188,7 +188,7 @@ def splits_ball(gb_dict):
 
     # 取出字典中的数据:center,gb,distances
     # 取字典数据，包括键值
-    gb_dict_temp = gb_dict.popitem() # (LLP)返回的是元组
+    gb_dict_temp = gb_dict.popitem() # 返回的是元组
     for center_split in gb_dict_temp[0].split('_'):
         center.append(float(center_split))
     center = np.array(center)  # 转为array
